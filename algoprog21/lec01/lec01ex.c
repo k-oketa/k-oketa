@@ -11,7 +11,7 @@ struct Link {
 
 struct Link *head;
 
-struct Link *newLink(char data[10]) {
+struct Link *newLink(char *data) {
     struct Link *nLink = (struct Link *) malloc(sizeof(struct Link));
     nLink -> data = data;
     nLink -> next = NULL;
