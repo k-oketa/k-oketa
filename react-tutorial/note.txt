@@ -1,0 +1,4 @@
+props(properties) と state の違い
+- props は <Square value={i} /> のvalue
+    - <>内で指定した変数は props に格納される（予想）
+- state はユーザが Board に持たせた値（React特有のものではない）
