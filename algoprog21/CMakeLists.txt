@@ -3,4 +3,4 @@ project(algopro21 C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(algopro21 lec01/lec01ex.c)
+add_executable(algopro21 lec02/lec02ex.c)
