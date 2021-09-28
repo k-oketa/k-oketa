@@ -1,4 +1,4 @@
-package lec01;
+package lec02;
 
 public class Hello {
     public static void main(String[] args) {
