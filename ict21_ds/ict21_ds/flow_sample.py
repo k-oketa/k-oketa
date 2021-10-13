@@ -7,6 +7,13 @@ import project
 
 
 def adjust_dict(result_series: pd.Series, result_format: dict = None) -> dict:
+    """
+    辞書形のキーの数と種類を変更するための関数
+
+    :param result_series: 分析結果
+    :param result_format: 変更後の形式
+    :return: 形式を変更した分析結果
+    """
     if result_format is None:
         result_format = {5: None, 4: None, 3: None, 2: None, 1: None}
     results = result_series.to_dict()
@@ -19,6 +26,7 @@ def adjust_dict(result_series: pd.Series, result_format: dict = None) -> dict:
 
 
 if __name__ == '__main__':
+    # データを1つのデータフレームにまとめる
     df = pd.DataFrame(columns=['回答者番号', '回答内容'])
     for q_num in range(1, 24):
         q_df = pd.read_csv(project.data_dir + 'D/Q[{}].csv'.format(q_num), header=2, encoding='shift-jis')
@@ -33,11 +41,13 @@ if __name__ == '__main__':
     df = df.replace({'4）上記をmixした講義': 4, '3）Zoom等、リアルタイム双方向型のオンライン講義': 3, '2）ビデオ配信形式のオンライン講義': 2, '1）通常の対面講義': 1})
     df.to_csv(project.data_dir + 'tmp.csv', index_label=False, index=False)
 
+    # データに含まれるそれぞれの値の数を数える
     result_each_question = {}
     for question_number in range(2, 22):
         result = adjust_dict(df['回答内容_{}'.format(question_number)].value_counts())
         result_each_question['回答内容_{}'.format(question_number)] = result
 
+    # 上記プログラムで求めた値の数をexcelに書き込む
     wb = openpyxl.load_workbook(project.data_dir + 'template.xlsx')
     ws = wb.active
     student_number_cell = ws['H122']
@@ -47,10 +57,12 @@ if __name__ == '__main__':
         cells = ws['{}127:{}131'.format(alphabet, alphabet)]
         for data, cell in zip(result.values(), cells):
             cell[0].value = data
-    wb.save(project.data_dir + 'saved.xlsx')
 
-    q23_result = adjust_dict(df['回答内容_21'].value_counts(), result_format={1: None, 2: None, 3: None, 4: None})
+    # Q21は形式が例外であるため、別途プログラムで実行
+    q21_result = adjust_dict(df['回答内容_21'].value_counts(), result_format={1: None, 2: None, 3: None, 4: None})
     cells = ws['X162':'X165']
-    for data, cell in zip(q23_result.values(), cells):
+    for data, cell in zip(q21_result.values(), cells):
         cell[0].value = data
+
+    # excelファイルを保存
     wb.save(project.data_dir + 'saved.xlsx')
