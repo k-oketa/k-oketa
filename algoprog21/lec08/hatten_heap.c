@@ -77,7 +77,7 @@ void load(){
     char buffer[BUFFER_SIZE];
     int n = 0;
     int i = 0;
-    FILE *fp = fopen("text.txt", "r");
+    FILE *fp = fopen("C:/Users/okete/_/algoprog21/lec08/text.txt", "r");
     if(!fp){
         puts("file cannot open!");
         exit(-1);
@@ -94,29 +94,29 @@ int main() {
 
     // 【 1 】現在時刻を保存する変数start, endを宣言する
     // clock_t start, end;
-    【 1 】;
+    clock_t start, end;
 
     // 【 2 】int型のメモリ領域をARRAY_SIZE分だけ確保する
     // array = (int*)malloc(sizeof(int) * ARRAY_SIZE);
-    array = 【 2 】;
+    array = (int*) malloc(sizeof(int) * ARRAY_SIZE);
 
     // 【 3 】テキストファイルを読み込む関数を呼び出す
     // load();
-    【 3 】;
+    load();
     
     // 【 4 】現在時刻を取得する
     // start = clock();
-    start = 【 4 】;
+    start = clock();
 
     heapSort();
 
     // 【 4 】現在時刻を取得する
     // end = clock();
-    end = 【 4 】;
+    end = clock();
     
     printf("data: %d.\n", MAX_LENGTH);
 
     // 【 5 】ソートにかかった時間を計算し表示する
     // printf("time elapsed: %ld ms.\n", end - start);
-    printf("time elapsed: %ld ms.\n", 【 5 】);
+    printf("time elapsed: %ld ms.\n", end - start);
 }
