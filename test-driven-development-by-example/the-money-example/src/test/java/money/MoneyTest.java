@@ -45,4 +45,12 @@ public class MoneyTest {
         assertEquals(five, sum.augend);
         assertEquals(five, sum.addend);
     }
+
+    @Test
+    void testReduceSum() {
+        var sum = new Sum(Money.dollar(3), Money.dollar(4));
+        var bank = new Bank();
+        var result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(7), result);
+    }
 }
