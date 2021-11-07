@@ -22,8 +22,8 @@ class Money implements Expression {
         return currency;
     }
 
-    Expression plus(int addend) {
-        return new Money(amount + addend, currency);
+    Expression plus(Money addend) {
+        return new Money(amount + addend.amount, currency);
     }
 
     static Money dollar(int amount) {

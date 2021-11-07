@@ -30,9 +30,18 @@ public class MoneyTest {
     @Test
     void testSimpleAddition() {
         var five = Money.dollar(5);
-        var sum = five.plus(5);
+        var sum = five.plus(five);
         var bank = new Bank();
         var reduced = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(10), sum);
+    }
+
+    @Test
+    void testPlusReturnsSum() {
+        var five = Money.dollar(5);
+        var result = five.plus(five);
+        var sum = (Sum) result;
+        assertEquals(five, sum.augend);
+        assertEquals(five, sum.addend);
     }
 }
