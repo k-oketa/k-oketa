@@ -1,6 +1,6 @@
 package money;
 
-abstract class Money {
+class Money {
     protected int amount;
     protected String currency;
 
@@ -9,11 +9,13 @@ abstract class Money {
         this.currency = currency;
     }
 
-    abstract Money times(int multiplier);
+    Money times(int multiplier) {
+        return null;
+    }
 
     public boolean equals(Object object) {
         var money = (Money) object;
-        return amount == money.amount && getClass().equals(money.getClass());
+        return amount == money.amount && currency().equals(money.currency());
     }
 
     String currency() {
@@ -26,5 +28,10 @@ abstract class Money {
 
     static Franc franc(int amount) {
         return new Franc(amount, "CHF");
+    }
+
+    @Override
+    public String toString() {
+        return amount + " " + currency + " " + getClass();
     }
 }
