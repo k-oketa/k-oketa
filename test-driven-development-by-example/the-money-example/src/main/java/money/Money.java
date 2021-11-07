@@ -1,8 +1,6 @@
 package money;
 
-import java.awt.event.MouseEvent;
-
-class Money {
+class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -24,8 +22,8 @@ class Money {
         return currency;
     }
 
-    Money plus(Money addend) {
-        return new Money(amount + addend.amount, currency);
+    Expression plus(int addend) {
+        return new Money(amount + addend, currency);
     }
 
     static Money dollar(int amount) {
