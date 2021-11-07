@@ -1,5 +1,6 @@
 package money;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,7 +34,7 @@ public class MoneyTest {
         var sum = five.plus(five);
         var bank = new Bank();
         var reduced = bank.reduce(sum, "USD");
-        assertEquals(Money.dollar(10), sum);
+        assertEquals(Money.dollar(10), reduced);
     }
 
     @Test
