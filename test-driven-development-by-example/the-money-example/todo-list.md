@@ -3,3 +3,7 @@
 - [ ] amount を private にする
 - [ ] ~~Dollarの副作用をどうする？~~
 - [ ] Moneyの丸め処理どうする？
+- [ ] ~~equals()~~
+- [ ] hashCode()
+- [ ] nullとの等価性比較
+- [ ] 他のオブジェクトとの等価性比較
