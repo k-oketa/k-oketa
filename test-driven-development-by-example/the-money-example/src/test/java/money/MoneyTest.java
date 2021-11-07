@@ -93,4 +93,15 @@ public class MoneyTest {
         var result = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(15), result);
     }
+
+    @Test
+    void testSumTimes() {
+        var fiveBucks = Money.dollar(5);
+        var tenFrancs = Money.franc(10);
+        var bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        var sum = new Sum(fiveBucks, tenFrancs).times(2);
+        var result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
+    }
 }
