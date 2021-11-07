@@ -1,5 +1,7 @@
 package money;
 
+import java.awt.event.MouseEvent;
+
 class Money {
     protected int amount;
     protected String currency;
@@ -20,6 +22,10 @@ class Money {
 
     String currency() {
         return currency;
+    }
+
+    Money plus(Money addend) {
+        return new Money(amount + addend.amount, currency);
     }
 
     static Money dollar(int amount) {
