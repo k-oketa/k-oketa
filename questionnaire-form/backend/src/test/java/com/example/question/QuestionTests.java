@@ -11,5 +11,6 @@ public class QuestionTests {
         var one = new Question(1);
         var two = new Question(2);
         assertEquals(one.compareTo(two), -1);
+        assertEquals(two.compareTo(one), 1);
     }
 }
