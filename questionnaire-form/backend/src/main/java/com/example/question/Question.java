@@ -10,6 +10,6 @@ public class Question implements Comparable<Question> {
 
     @Override
     public int compareTo(Question o) {
-        return 0;
+        return -1;
     }
 }
