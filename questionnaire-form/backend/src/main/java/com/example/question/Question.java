@@ -10,6 +10,12 @@ public class Question implements Comparable<Question> {
 
     @Override
     public int compareTo(Question o) {
-        return -1;
+        if (ordinal < o.ordinal) {
+            return -1;
+        } else if (ordinal > o.ordinal) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
