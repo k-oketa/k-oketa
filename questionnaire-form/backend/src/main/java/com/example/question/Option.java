@@ -1,21 +1,9 @@
 package com.example.question;
 
-public class Option implements Comparable<Option> {
-
-    int ordinal;
-
-    Option(int ordinal) {
-        this.ordinal = ordinal;
-    }
+public record Option(int ordinal) implements Comparable<Option> {
 
     @Override
     public int compareTo(Option other) {
-        if (ordinal < other.ordinal) {
-            return -1;
-        } else if (ordinal > other.ordinal) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return Integer.compare(ordinal, other.ordinal);
     }
 }
