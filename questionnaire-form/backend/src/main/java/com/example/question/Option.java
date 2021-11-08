@@ -10,6 +10,12 @@ public class Option implements Comparable<Option> {
 
     @Override
     public int compareTo(Option other) {
-        return 0;
+        if (ordinal < other.ordinal) {
+            return -1;
+        } else if (ordinal > other.ordinal) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
