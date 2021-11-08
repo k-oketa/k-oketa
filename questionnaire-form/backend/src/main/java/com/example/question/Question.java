@@ -1,8 +1,10 @@
 package com.example.question;
 
-public class Question extends Ordinal {
+public class Question {
+
+    Ordinal ordinal;
 
     Question(int number) {
-        super(number);
+        this.ordinal = new Ordinal(number);
     }
 }
