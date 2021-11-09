@@ -3,6 +3,7 @@ package com.example.question;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
@@ -20,6 +21,7 @@ public class OptionTests {
                 new Option(2),
                 new Option(3),
                 new Option(4));
+        Collections.sort(actual);
         assertIterableEquals(expected, actual);
     }
 }
