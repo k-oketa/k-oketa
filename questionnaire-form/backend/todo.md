@@ -3,3 +3,5 @@
 - [x] ~~質問の出題条件を設定~~
 - [x] ~~選択肢をソート~~
 - [x] ~~質問と選択肢のソート関係のテストの重複~~
+- [ ] questionService.skip(question, accountId)
+- [ ] questionType
