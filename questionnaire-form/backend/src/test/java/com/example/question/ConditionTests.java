@@ -11,6 +11,6 @@ public class ConditionTests {
     @Test
     void testContain() {
         var conditions = Arrays.asList(new Condition(1, 1), new Condition(1, 2));
-        assertTrue(conditions.contains(1));
+        assertTrue(conditions.contains(new Condition(1, 1)));
     }
 }
