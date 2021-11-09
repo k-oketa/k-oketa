@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!theme toy
+
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam defaultFontName Cica
+
+class 順序 {
+    番号: int
+}
+
+class 選択肢 {
+--
+選択肢(順序: int)
+}
+
+class 質問 {
+--
+質問(順序: int)
+}
+
+interface Comparable {
+--
+compareTo(other: T): int
+}
+
+順序 ..|> Comparable
+選択肢 --|> 順序
+質問 --|> 順序
+
+@enduml
