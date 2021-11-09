@@ -3,11 +3,11 @@ package com.example.question;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode
-public class Ordinal implements Comparable<Ordinal> {
+class Ordinal implements Comparable<Ordinal> {
 
     private final int number;
 
-    Ordinal(int number) {
+    protected Ordinal(int number) {
         this.number = number;
     }
 

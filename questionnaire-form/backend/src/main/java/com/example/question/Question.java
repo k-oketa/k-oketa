@@ -2,7 +2,7 @@ package com.example.question;
 
 public class Question extends Ordinal {
 
-    Question(int number) {
+    public Question(int number) {
         super(number);
     }
 }
