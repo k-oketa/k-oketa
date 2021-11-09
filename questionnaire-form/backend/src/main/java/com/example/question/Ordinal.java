@@ -1,6 +1,15 @@
 package com.example.question;
 
-public record Ordinal(int number) implements Comparable<Ordinal> {
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
+public class Ordinal implements Comparable<Ordinal> {
+
+    private final int number;
+
+    Ordinal(int number) {
+        this.number = number;
+    }
 
     @Override
     public int compareTo(Ordinal other) {
