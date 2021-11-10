@@ -26,6 +26,8 @@ public class CarController : MonoBehaviour
             var swipeLength = endPosition.x - this.startPosition.x;
 
             this.speed = swipeLength / 500.0f;
+            
+            GetComponent<AudioSource>().Play();
         }
         
         transform.Translate(this.speed, 0, 0);
