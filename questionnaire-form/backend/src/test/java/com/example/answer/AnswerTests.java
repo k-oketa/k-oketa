@@ -1,10 +1,8 @@
 package com.example.answer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,5 +31,21 @@ public class AnswerTests {
         var answerConverter = new AnswerConverter();
         var json = answerConverter.convertToJson(answer);
         assertEquals("{\"type\":\"description\",\"content\":\"It was written\"}", json);
+    }
+
+    @Test
+    void testSingleChoiceAndDescriptionAnswerToJsonConversion() throws JsonProcessingException {
+        var answer = new SingleChoiceAndDescriptionAnswer(
+                "singleChoiceAndDescription",
+                new SingleChoiceAndDescription(
+                        new SingleChoiceAnswer("singleChoice", 0),
+                        new DescriptionAnswer("description", "It was written")
+                ));
+        var answerConverter = new AnswerConverter();
+        var json = answerConverter.convertToJson(answer);
+        var expected = "{\"type\":\"singleChoiceAndDescription\",\"content\":" +
+                "{\"singleChoiceAnswer\":{\"type\":\"singleChoice\",\"content\":0}," +
+                "\"descriptionAnswer\":{\"type\":\"description\",\"content\":\"It was written\"}}}";
+        assertEquals(expected, json);
     }
 }
