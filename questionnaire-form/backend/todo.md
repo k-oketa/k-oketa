@@ -5,3 +5,5 @@
 - [x] ~~質問と選択肢のソート関係のテストの重複~~
 - [ ] questionService.skip(question, accountId)
 - [ ] questionType
+- [ ] accountの実装
+- [ ] Answer
