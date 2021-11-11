@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AnswerConverter {
 
-    <T extends Answer> String convertToJson(T answer) throws JsonProcessingException {
+    <T> String convertToJson(T answer) throws JsonProcessingException {
         var mapper = new ObjectMapper();
         return mapper.writeValueAsString(answer);
     }
