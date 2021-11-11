@@ -1,6 +1,7 @@
 package com.example.answer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -24,5 +25,13 @@ public class AnswerTests {
         var answerConverter = new AnswerConverter();
         var json = answerConverter.convertToJson(answer);
         assertEquals("{\"type\":\"multipleChoice\",\"content\":[0,1,2]}", json);
+    }
+
+    @Test
+    void testDescriptionAnswerToJsonConversion() throws JsonProcessingException {
+        var answer = new DescriptionAnswer("description", "It was written");
+        var answerConverter = new AnswerConverter();
+        var json = answerConverter.convertToJson(answer);
+        assertEquals("{\"type\":\"description\",\"content\":\"It was written\"}", json);
     }
 }
