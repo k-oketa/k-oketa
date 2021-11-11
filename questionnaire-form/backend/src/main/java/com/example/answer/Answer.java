@@ -1,13 +1,15 @@
 package com.example.answer;
 
-public record Answer(String type, String content) {
+import lombok.Getter;
 
-    String getType() {
-        return type;
+@Getter
+public abstract class Answer<T> {
+
+    Answer(String type, T content) {
+        this.type = type;
+        this.content = content;
     }
 
-    String getContent() {
-        return content;
-    }
-
+    String type;
+    T content;
 }
