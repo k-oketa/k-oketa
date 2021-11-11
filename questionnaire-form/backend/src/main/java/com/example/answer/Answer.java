@@ -1,15 +1,15 @@
 package com.example.answer;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 
 @Getter
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS)
 public abstract class Answer<T> {
 
-    Answer(String type, T content) {
-        this.type = type;
+    Answer(T content) {
         this.content = content;
     }
 
-    String type;
     T content;
 }
