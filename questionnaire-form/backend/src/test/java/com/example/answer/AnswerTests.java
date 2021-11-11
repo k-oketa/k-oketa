@@ -9,9 +9,9 @@ public class AnswerTests {
 
     @Test
     void testAnswerToJsonConversion() throws JsonProcessingException {
-        var answer = new Answer("description");
+        var answer = new Answer("description", "description");
         var answerConverter = new AnswerConverter();
         var json = answerConverter.convertToJson(answer);
-        assertEquals("{\"content\":\"description\"}", json);
+        assertEquals("{\"type\":\"description\",\"content\":\"description\"}", json);
     }
 }
