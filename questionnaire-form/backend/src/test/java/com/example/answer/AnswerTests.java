@@ -1,6 +1,7 @@
 package com.example.answer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -46,5 +47,13 @@ public class AnswerTests {
                 "{\"singleChoiceAnswer\":{\"@class\":\"com.example.answer.SingleChoiceAnswer\",\"content\":0}," +
                 "\"descriptionAnswer\":{\"@class\":\"com.example.answer.DescriptionAnswer\",\"content\":\"It was written\"}}}";
         assertEquals(expected, json);
+    }
+
+    @Test
+    void testJsonToSingleChoiceAnswerConversion() throws JsonProcessingException {
+        var json = "{\"@class\":\"com.example.answer.SingleChoiceAnswer\",\"content\":0}";
+        var answerConverter = new AnswerConverter();
+        var answer = answerConverter.convertToAnswer(json, SingleChoiceAnswer.class);
+        assertEquals(new SingleChoiceAnswer(0), answer);
     }
 }

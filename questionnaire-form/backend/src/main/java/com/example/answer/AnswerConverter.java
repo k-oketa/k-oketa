@@ -9,4 +9,9 @@ public class AnswerConverter {
         var mapper = new ObjectMapper();
         return mapper.writeValueAsString(answer);
     }
+
+    Answer convertToAnswer(String json, Class<? extends Answer> clazz) throws JsonProcessingException {
+        var mapper = new ObjectMapper();
+        return mapper.readValue(json, clazz);
+    }
 }
