@@ -1,5 +1,6 @@
 package com.example.answer;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AnswerTests {
 
     @Test
-    void testAnswerToJsonConversion() {
-        var answer = new Answer();
+    void testAnswerToJsonConversion() throws JsonProcessingException {
+        var answer = new Answer("description");
         var answerConverter = new AnswerConverter();
         var json = answerConverter.convertToJson(answer);
-        assertEquals("{}", json);
+        assertEquals("{\"content\":\"description\"}", json);
     }
 }

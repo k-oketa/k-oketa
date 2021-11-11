@@ -1,4 +1,9 @@
 package com.example.answer;
 
-public class Answer {
+public record Answer(String content) {
+
+    String getContent() {
+        return content;
+    }
+
 }
