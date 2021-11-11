@@ -6,4 +6,4 @@
 - [ ] questionService.skip(question, accountId)
 - [ ] questionType
 - [ ] accountの実装
-- [ ] Answer
+- [x] ~~Answer~~
