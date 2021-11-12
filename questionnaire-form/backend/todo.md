@@ -7,3 +7,5 @@
 - [ ] questionType
 - [ ] accountの実装
 - [x] ~~Answer~~
+- [ ] DBの回答データをAPIで取得
+- [ ] AuthenticationAccount
