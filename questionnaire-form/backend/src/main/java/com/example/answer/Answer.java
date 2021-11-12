@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public abstract class Answer<T> {
 
+    T content;
+
     Answer(T content) {
         this.content = content;
     }
-
-    T content;
 }
