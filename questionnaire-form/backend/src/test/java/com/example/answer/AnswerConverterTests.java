@@ -63,4 +63,12 @@ public class AnswerConverterTests {
         var answer = answerConverter.convertToAnswer(json);
         assertEquals(new MultipleChoiceAnswer(Arrays.asList(0, 1, 2)), answer);
     }
+
+    @Test
+    void testJsonToDescriptionChoiceAnswerConversion() throws  JsonProcessingException {
+        var json = "{\"@type\":\"DescriptionAnswer\",\"content\":\"It was written\"}";
+        var answerConverter = new AnswerConverter();
+        var answer = answerConverter.convertToAnswer(json);
+        assertEquals(new DescriptionAnswer("It was written"), answer);
+    }
 }

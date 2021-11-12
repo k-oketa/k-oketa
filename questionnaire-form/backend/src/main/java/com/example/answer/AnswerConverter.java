@@ -23,6 +23,8 @@ public class AnswerConverter {
             return new SingleChoiceAnswer((Integer) map.get("content"));
         } else if (answerType.equals("MultipleChoiceAnswer")) {
             return new MultipleChoiceAnswer((ArrayList<Integer>) map.get("content"));
+        } else if (answerType.equals("DescriptionAnswer")) {
+            return new DescriptionAnswer((String) map.get("content"));
         }
         return mapper.readValue(json, SingleChoiceAnswer.class);
     }
