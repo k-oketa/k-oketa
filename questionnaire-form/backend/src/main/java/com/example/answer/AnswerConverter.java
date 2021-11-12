@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class AnswerConverter {
@@ -25,6 +24,14 @@ public class AnswerConverter {
             return new MultipleChoiceAnswer((ArrayList<Integer>) map.get("content"));
         } else if (answerType.equals("DescriptionAnswer")) {
             return new DescriptionAnswer((String) map.get("content"));
+        } else if (answerType.equals("SingleChoiceAndDescriptionAnswer")) {
+            var content = (Map) map.get("content");
+            var singleChoiceAnswer = new SingleChoiceAnswer(
+                    (Integer) ((Map) content.get("singleChoiceAnswer")).get("content"));
+            var descriptionAnswer = new DescriptionAnswer(
+                    (String) ((Map) content.get("descriptionAnswer")).get("content"));
+            return new SingleChoiceAndDescriptionAnswer(
+                    new SingleChoiceAndDescription(singleChoiceAnswer, descriptionAnswer));
         }
         return mapper.readValue(json, SingleChoiceAnswer.class);
     }

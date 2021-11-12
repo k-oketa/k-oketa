@@ -71,4 +71,17 @@ public class AnswerConverterTests {
         var answer = answerConverter.convertToAnswer(json);
         assertEquals(new DescriptionAnswer("It was written"), answer);
     }
+
+    @Test
+    void testJsonToSingleChoiceAndDescriptionAnswerConversion() throws JsonProcessingException {
+        var json = "{\"@type\":\"SingleChoiceAndDescriptionAnswer\",\"content\":{" +
+                "\"singleChoiceAnswer\":{\"@type\":\"SingleChoiceAnswer\",\"content\":0}," +
+                "\"descriptionAnswer\":{\"@type\":\"DescriptionAnswer\",\"content\":\"It was written\"}}}";
+        var answerConverter = new AnswerConverter();
+        var answer = answerConverter.convertToAnswer(json);
+        var expected = new SingleChoiceAndDescriptionAnswer(new SingleChoiceAndDescription(
+                new SingleChoiceAnswer(0),
+                new DescriptionAnswer("It was written")));
+        assertEquals(expected, answer);
+    }
 }
