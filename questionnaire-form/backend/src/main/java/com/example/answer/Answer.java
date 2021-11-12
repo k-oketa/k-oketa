@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME)
+@EqualsAndHashCode
 public abstract class Answer<T> {
 
     Answer(T content) {
