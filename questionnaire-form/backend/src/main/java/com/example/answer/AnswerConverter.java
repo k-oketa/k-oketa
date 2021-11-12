@@ -12,11 +12,11 @@ public class AnswerConverter {
     public AnswerConverter() {
         this.mapper = new ObjectMapper();
         this.mapper.registerSubtypes(
-                new NamedType(SingleChoiceAnswer.class, "SingleChoiceAnswer"),
-                new NamedType(MultipleChoiceAnswer.class, "MultipleChoiceAnswer"),
-                new NamedType(DescriptionAnswer.class, "DescriptionAnswer"),
-                new NamedType(SingleChoiceAndDescriptionAnswer.class, "SingleChoiceAndDescriptionAnswer"),
-                new NamedType(EmptyAnswer.class, "EmptyAnswer")
+                new NamedType(SingleChoiceAnswer.class, AnswerType.SINGLE_CHOICE.getName()),
+                new NamedType(MultipleChoiceAnswer.class, AnswerType.MULTIPLE_CHOICE.getName()),
+                new NamedType(DescriptionAnswer.class, AnswerType.DESCRIPTION.getName()),
+                new NamedType(SingleChoiceAndDescriptionAnswer.class, AnswerType.SINGLE_CHOICE_AND_DESCRIPTION.getName()),
+                new NamedType(EmptyAnswer.class, AnswerType.EMPTY.getName())
         );
     }
 
@@ -27,14 +27,13 @@ public class AnswerConverter {
     public Answer convertToAnswer(String json) throws JsonProcessingException {
         var factory = mapper.getTypeFactory();
         var jsonNode = (JsonNode) mapper.readValue(json, factory.constructType(JsonNode.class));
-        var answerType = jsonNode.get("@type").asText();
+        var answerType = AnswerType.lookup(jsonNode.get("@type").asText());
         return switch (answerType) {
-            case "SingleChoiceAnswer" -> mapper.readValue(json, factory.constructType(SingleChoiceAnswer.class));
-            case "MultipleChoiceAnswer" -> mapper.readValue(json, factory.constructType(MultipleChoiceAnswer.class));
-            case "DescriptionAnswer" -> mapper.readValue(json, factory.constructType(DescriptionAnswer.class));
-            case "SingleChoiceAndDescriptionAnswer" -> mapper.readValue(json, factory.constructType(SingleChoiceAndDescriptionAnswer.class));
-            case "EmptyAnswer" -> mapper.readValue(json, factory.constructType(EmptyAnswer.class));
-            default -> new EmptyAnswer();
+            case SINGLE_CHOICE -> mapper.readValue(json, factory.constructType(SingleChoiceAnswer.class));
+            case MULTIPLE_CHOICE -> mapper.readValue(json, factory.constructType(MultipleChoiceAnswer.class));
+            case DESCRIPTION -> mapper.readValue(json, factory.constructType(DescriptionAnswer.class));
+            case SINGLE_CHOICE_AND_DESCRIPTION -> mapper.readValue(json, factory.constructType(SingleChoiceAndDescriptionAnswer.class));
+            case EMPTY -> mapper.readValue(json, factory.constructType(EmptyAnswer.class));
         };
     }
 }
