@@ -84,4 +84,20 @@ public class AnswerConverterTests {
                 new DescriptionAnswer("It was written")));
         assertEquals(expected, answer);
     }
+
+    @Test
+    void testEmptyAnswerToJsonConversion() throws JsonProcessingException {
+        var answer = new EmptyAnswer();
+        var answerConverter = new AnswerConverter();
+        var json = answerConverter.convertToJson(answer);
+        assertEquals("{\"@type\":\"EmptyAnswer\",\"content\":\"\"}", json);
+    }
+
+    @Test
+    void testJsonToEmptyAnswerConversion() throws  JsonProcessingException {
+        var json = "{\"@type\":\"EmptyAnswer\",\"content\":\"\"}";
+        var answerConverter = new AnswerConverter();
+        var answer = answerConverter.convertToAnswer(json);
+        assertEquals(new EmptyAnswer(), answer);
+    }
 }
