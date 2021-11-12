@@ -3,6 +3,8 @@ package com.example.answer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class AnswerConverter {
@@ -19,6 +21,8 @@ public class AnswerConverter {
         var answerType = map.get("@type");
         if (answerType.equals("SingleChoiceAnswer")) {
             return new SingleChoiceAnswer((Integer) map.get("content"));
+        } else if (answerType.equals("MultipleChoiceAnswer")) {
+            return new MultipleChoiceAnswer((ArrayList<Integer>) map.get("content"));
         }
         return mapper.readValue(json, SingleChoiceAnswer.class);
     }

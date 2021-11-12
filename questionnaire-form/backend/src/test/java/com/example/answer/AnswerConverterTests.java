@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AnswerTests {
+public class AnswerConverterTests {
 
     @Test
     void testSingleChoiceAnswerToJsonConversion() throws JsonProcessingException {
@@ -54,5 +54,13 @@ public class AnswerTests {
         var answerConverter = new AnswerConverter();
         var answer = answerConverter.convertToAnswer(json);
         assertEquals(new SingleChoiceAnswer(0), answer);
+    }
+
+    @Test
+    void testJsonToMultipleChoiceAnswerConversion() throws JsonProcessingException {
+        var json = "{\"@type\":\"MultipleChoiceAnswer\",\"content\":[0,1,2]}";
+        var answerConverter = new AnswerConverter();
+        var answer = answerConverter.convertToAnswer(json);
+        assertEquals(new MultipleChoiceAnswer(Arrays.asList(0, 1, 2)), answer);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.answer;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
