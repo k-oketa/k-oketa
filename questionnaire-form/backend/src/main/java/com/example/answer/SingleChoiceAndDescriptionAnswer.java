@@ -4,7 +4,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class SingleChoiceAndDescriptionAnswer extends Answer<SingleChoiceAndDescription> {
-    SingleChoiceAndDescriptionAnswer(SingleChoiceAndDescription content) {
+    public SingleChoiceAndDescriptionAnswer(SingleChoiceAndDescription content) {
         super(content);
     }
 }

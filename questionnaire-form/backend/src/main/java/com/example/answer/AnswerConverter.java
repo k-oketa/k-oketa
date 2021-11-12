@@ -9,7 +9,7 @@ public class AnswerConverter {
 
     private final ObjectMapper mapper;
 
-    AnswerConverter() {
+    public AnswerConverter() {
         this.mapper = new ObjectMapper();
         this.mapper.registerSubtypes(
                 new NamedType(SingleChoiceAnswer.class, "SingleChoiceAnswer"),
@@ -20,11 +20,11 @@ public class AnswerConverter {
         );
     }
 
-    <T> String convertToJson(T answer) throws JsonProcessingException {
+    public <T> String convertToJson(T answer) throws JsonProcessingException {
         return mapper.writeValueAsString(answer);
     }
 
-    Answer convertToAnswer(String json) throws JsonProcessingException {
+    public Answer convertToAnswer(String json) throws JsonProcessingException {
         var factory = mapper.getTypeFactory();
         var jsonNode = (JsonNode) mapper.readValue(json, factory.constructType(JsonNode.class));
         var answerType = jsonNode.get("@type").asText();
