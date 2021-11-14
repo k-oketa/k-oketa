@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @JsonTypeInfo(use=JsonTypeInfo.Id.NAME)
 @EqualsAndHashCode
 @NoArgsConstructor
-public abstract class Answer<T> {
+abstract class Answer<T> {
 
     private T content;
 

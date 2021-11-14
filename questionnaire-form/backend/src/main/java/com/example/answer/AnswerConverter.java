@@ -24,7 +24,7 @@ public class AnswerConverter {
         return mapper.writeValueAsString(answer);
     }
 
-    public Answer convertToAnswer(String json) throws JsonProcessingException {
+    public Answer<?> convertToAnswer(String json) throws JsonProcessingException {
         var factory = mapper.getTypeFactory();
         var jsonNode = (JsonNode) mapper.readValue(json, factory.constructType(JsonNode.class));
         var answerType = AnswerType.lookup(jsonNode.get("@type").asText());
