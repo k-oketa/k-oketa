@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -32,6 +33,9 @@ public class ArrowController : MonoBehaviour
 
         if (d < r1 + r2)
         {
+            var director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHp();
+
             Destroy(gameObject);
         }
     }
