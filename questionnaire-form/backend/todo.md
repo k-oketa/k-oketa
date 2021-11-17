@@ -9,3 +9,5 @@
 - [x] ~~Answer~~
 - [ ] DBの回答データをAPIで取得
 - [ ] AuthenticationAccount
+- [ ] ordinalをbuilderで指定できるようにする
+  - [ ] null問題をどうする？
