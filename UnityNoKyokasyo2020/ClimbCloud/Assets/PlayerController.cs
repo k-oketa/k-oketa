@@ -22,8 +22,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetMouseButtonDown(0) && this.rigidBody.velocity.y == 0)
         {
+            this.animator.SetTrigger("JumpTrigger");
             this.rigidBody.AddForce(transform.up * this.jumpForce);
         }
 
@@ -32,6 +34,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow)) key = -1;
 
         var speedx = Mathf.Abs(this.rigidBody.velocity.x);
+
+        if (this.rigidBody.velocity.y == 0)
+        {
+            this.animator.speed = speedx / 2.0f;
+        }
+        else
+        {
+            this.animator.speed = 1.0f;
+        }
 
         if (speedx < this.maxWalkSpeed)
         {
