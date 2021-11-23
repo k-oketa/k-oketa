@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+!theme toy
+
+
+class Book {
+    name: String
+}
+
+class BookShelf {
+    books: Book[]
+    last: int
+}
+
+class BookShelfIterator {
+    books: BookShelf
+    index: int
+}
+
+interface Iterable {
+    --
+    iterator()
+}
+
+interface Iterator {
+    --
+    hasNext()
+    next()
+}
+
+BookShelfIterator ..|> Iterator
+BookShelf ..|> Iterable
+
+Book "0..*" --o "1" BookShelf
+
+Iterable -- Iterator: Create >
+BookShelf "1" --o "1" BookShelfIterator
+
+@enduml
