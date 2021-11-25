@@ -1,4 +1,4 @@
-package adapter.extension.example;
+package adapter.example.extension;
 
 public class Main {
 

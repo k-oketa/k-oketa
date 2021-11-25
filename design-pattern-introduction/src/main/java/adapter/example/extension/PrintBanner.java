@@ -1,6 +1,6 @@
-package adapter.extension.example;
+package adapter.example.extension;
 
-import adapter.Banner;
+import adapter.example.Banner;
 
 public class PrintBanner extends Banner implements Print {
 
