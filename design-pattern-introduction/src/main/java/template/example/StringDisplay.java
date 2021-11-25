@@ -1,6 +1,6 @@
 package template.example;
 
-public class StringDisplay extends AbstractDisplay {
+public class StringDisplay implements AbstractDisplay {
 
     private final String string;
     private final int width;
@@ -11,17 +11,17 @@ public class StringDisplay extends AbstractDisplay {
     }
 
     @Override
-    protected void open() {
+    public void open() {
         printLine();
     }
 
     @Override
-    protected void print() {
+    public void print() {
         System.out.println("|" + string + "|");
     }
 
     @Override
-    protected void close() {
+    public void close() {
         printLine();
     }
 

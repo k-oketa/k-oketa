@@ -1,12 +1,12 @@
 package template.example;
 
-public abstract class AbstractDisplay {
+public interface AbstractDisplay {
 
-    abstract void open();
-    abstract void print();
-    abstract void close();
+    void open();
+    void print();
+    void close();
 
-    public final void display() {
+    default void display() {
         open();
         for (var i = 0; i < 5; i++) {
             print();

@@ -1,6 +1,6 @@
 package template.example;
 
-public class CharDisplay extends AbstractDisplay {
+public class CharDisplay implements AbstractDisplay {
 
     private final char ch;
 
@@ -9,17 +9,17 @@ public class CharDisplay extends AbstractDisplay {
     }
 
     @Override
-    protected void open() {
+    public void open() {
         System.out.print("<<");
     }
 
     @Override
-    protected void print() {
+    public void print() {
         System.out.print(ch);
     }
 
     @Override
-    protected void close() {
+    public void close() {
         System.out.println(">>");
     }
 }
