@@ -1,18 +1,18 @@
-package adapter.extension.example;
+package adapter.example;
 
 public class Banner {
 
     private final String string;
 
-    Banner(String string) {
+    public Banner(String string) {
         this.string = string;
     }
 
-    void showWithParen() {
+    public void showWithParen() {
         System.out.println("(" + string + ")");
     }
 
-    void showWithAster() {
+    public void showWithAster() {
         System.out.println("*" + string + "*");
     }
 }

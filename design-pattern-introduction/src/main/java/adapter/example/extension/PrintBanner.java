@@ -1,8 +1,10 @@
 package adapter.extension.example;
 
+import adapter.Banner;
+
 public class PrintBanner extends Banner implements Print {
 
-    PrintBanner(String string) {
+    public PrintBanner(String string) {
         super(string);
     }
 
