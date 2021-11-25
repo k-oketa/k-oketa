@@ -1,4 +1,4 @@
-package iter.example;
+package iterator.example;
 
 public class BookShelf implements Iterable<Book> {
 
