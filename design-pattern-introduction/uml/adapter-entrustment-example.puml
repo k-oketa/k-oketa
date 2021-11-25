@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Main
+abstract Print {
+    --
+    printWeak
+    printStrong
+}
+
+class PrintBanner {
+}
+
+class Banner {
+    --
+    showWithParen
+    showWithAster
+}
+
+Main --> PrintBanner : uses >
+PrintBanner ..> Print
+PrintBanner o--> Banner
+
+@enduml
