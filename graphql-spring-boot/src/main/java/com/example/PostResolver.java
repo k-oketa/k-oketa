@@ -1,6 +1,7 @@
 package com.example;
 
 import graphql.kickstart.tools.GraphQLResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -8,15 +9,17 @@ import java.util.*;
 @Component
 public class PostResolver implements GraphQLResolver<Post> {
 
-    private final Map<Long, List<Comment>> comments = new HashMap<>();
+    private final CommentRepository commentRepository;
 
-    PostResolver() {
-
-        comments.put(1L, Collections.singletonList(new Comment(1L, "Some Comment")));
+    @Autowired
+    public PostResolver(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+//        comments.put(1L, Collections.singletonList(new Comment(1L, "Some Comment")));
     }
 
     public List<Comment> getComments(Post post) {
-        return Optional.ofNullable(comments.get(post.getId()))
-                .orElseGet(Collections::emptyList);
+        return commentRepository.findByPostId(post.getId());
+//        return Optional.ofNullable(comments.get(post.getId()))
+//                .orElseGet(Collections::emptyList);
     }
 }

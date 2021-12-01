@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Comment {
 
+    private Long id;
     private Long postId;
     private String description;
 }
