@@ -1,15 +1,16 @@
 package com.example;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class Post {
 
-    @Getter
-    private final Long id;
+    private Long id;
 
-    @Getter
-    @Setter
     private String text;
 
     public Post(Long id) {

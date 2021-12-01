@@ -11,6 +11,7 @@ public class PostResolver implements GraphQLResolver<Post> {
     private final Map<Long, List<Comment>> comments = new HashMap<>();
 
     PostResolver() {
+
         comments.put(1L, Collections.singletonList(new Comment(1L, "Some Comment")));
     }
 

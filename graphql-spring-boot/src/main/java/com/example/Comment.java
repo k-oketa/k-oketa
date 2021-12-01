@@ -1,12 +1,13 @@
 package com.example;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Comment {
 
-    private Long id;
+    private Long postId;
     private String description;
 }
