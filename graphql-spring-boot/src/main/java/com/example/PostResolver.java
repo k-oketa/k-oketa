@@ -9,17 +9,17 @@ import java.util.*;
 @Component
 public class PostResolver implements GraphQLResolver<Post> {
 
-    private final CommentRepository commentRepository;
+    private final CommentService commentService;
 
     @Autowired
-    public PostResolver(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-//        comments.put(1L, Collections.singletonList(new Comment(1L, "Some Comment")));
+    public PostResolver(CommentService commentService) {
+        this.commentService = commentService;
+        // もう使わないけど、初めてみるメソッドなので残しておきます。
+        // comments.put(1L, Collections.singletonList(new Comment(1L, "Some Comment")));
     }
 
     public List<Comment> getComments(Post post) {
-        return commentRepository.findByPostId(post.getId());
-//        return Optional.ofNullable(comments.get(post.getId()))
-//                .orElseGet(Collections::emptyList);
+        return Optional.ofNullable(commentService.getPostedComments(post))
+                .orElseGet(Collections::emptyList);
     }
 }
