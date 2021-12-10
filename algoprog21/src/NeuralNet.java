@@ -15,6 +15,7 @@ public class NeuralNet {
 	double hidden[]; // 中間層
 	double output[]; // 出力層
 
+	// ➂ 学習パラメータεの設定
 	double alpha = 0.1;	//学習率
 
 	public NeuralNet( int nInput, int nHidden, int nOutput ) {
@@ -26,6 +27,7 @@ public class NeuralNet {
 		hidden = new double[N_HIDDEN]; // 中間層
 		output = new double[N_OUTPUT]; // 出力層
 
+		/* ➀ Wjk(2), Wij(1)の初期化 */
 		// 重みを-0.1~0.1で初期化
 		Random rnd = new Random();
 
@@ -44,6 +46,7 @@ public class NeuralNet {
 			}
 		}
 		b2 = new double[N_OUTPUT];
+		/* ➀ Wjk(2), Wij(1)の初期化 */
 
 	}
 
@@ -55,6 +58,7 @@ public class NeuralNet {
 			input[i] = x[i];
 		}
 
+		// ➃ 中間層の入力計算
 		// 中間層の計算
 		for(int i=0; i<N_HIDDEN; i++){
 			hidden[i] = 0.0;
@@ -62,9 +66,11 @@ public class NeuralNet {
 				hidden[i] += w1[j][i] * input[j];
 			}
 			hidden[i] += b1[i];
+			// ➄ 中間層の出力計算
 			hidden[i] = sigmoid(hidden[i]);
 		}
 
+		// ➅ 中間層の入力計算
 		// 出力層の計算
 		for(int i=0; i<N_OUTPUT; i++){
 			output[i] = 0.0;
@@ -72,6 +78,7 @@ public class NeuralNet {
 				output[i] += w2[j][i] * hidden[j];
 			}
 			output[i] += b2[i];
+			// ➆ 中間層の出力計算
 			output[i] = sigmoid(output[i]);
 		}
 
@@ -92,11 +99,15 @@ public class NeuralNet {
 
 		// 中間層>出力層の重みを更新
 		for(int j=0; j<N_OUTPUT; j++){
+			// ➇ σskの計算
 			deltas[j] = (teach[j]-output[j]) * output[j] * (1.0-output[j]);
+
+			/* ➈ 重みの更新 */
 			for(int i=0; i<N_HIDDEN; i++){
 				w2[i][j] += alpha * deltas[j] * hidden[i];
 			}
 			b2[j] += alpha * deltas[j];
+			/* ➈ 重みの更新 */
 		}
 
 		// 入力層>中間層の重みを更新
@@ -106,12 +117,15 @@ public class NeuralNet {
 			for(int j=0; j<N_OUTPUT; j++){
 				sum += w2[i][j] * deltas[j]; //誤差の逆伝播
 			}
-
+			// ➇ σskの計算
 			double delta = hidden[i] * (1.0-hidden[i]) * sum;
+
+			/* ➈ 重みの更新 */
 			for(int j=0; j<N_INPUT; j++){
 				w1[j][i] += alpha * delta * input[j];
 			}
 			b1[i] += alpha * delta;
+			/* ➈ 重みの更新 */
 		}
 	}
 
@@ -137,6 +151,7 @@ public class NeuralNet {
 			for(int i=0; i<knownInputs.length; i++){
 				compute(knownInputs[i]);
 				backPropagation(teach[i]);
+				// ➉ 誤差計算
 				e += calcError(teach[i]);
 			}
 
@@ -145,6 +160,7 @@ public class NeuralNet {
 				System.out.println("step:" + step + ", loss=" + e);
 			}
 
+			// 11. 条件分岐（誤差が十分に小さければ、学習ができているので終了）
 			// 二乗誤差が十分小さくなったら、終了
 			if(e < 0.0001){
 				break;

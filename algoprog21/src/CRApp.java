@@ -12,6 +12,7 @@ public class CRApp {
 
 		NeuralNet nn = new NeuralNet(36, 36, 4);
 
+		// ➁ 入力パターンの用意
 		// 訓練データ（入力）
 		double knownInputs[][] = {
 			{ // 0の訓練データ
@@ -32,6 +33,7 @@ public class CRApp {
 			}
 		};
 
+		// ➂ 教師信号パターンの用意
 		// 教師データ
 		double t[][] = {
 				{0, 0, 0, 0}, // この組み合わせを0とする
@@ -73,6 +75,7 @@ public class CRApp {
 		};
 
 		for ( int i=0; i<unknownInputs.length; i++ ) {
+			// 12. 推論
 			double[] output = nn.compute(unknownInputs[i]);
 			print(unknownInputs[i], output, expects[i]);
 		}
