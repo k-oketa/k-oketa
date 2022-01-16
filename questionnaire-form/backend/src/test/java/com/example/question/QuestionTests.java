@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 public class QuestionTests {
 
     @Test
-    void testSortQuestion() {
+    void sortableQuestionByOrdinal() {
         var questions = Arrays.asList(
                 new SingleChoiceQuestion(1),
                 new MultipleChoiceQuestion(4),

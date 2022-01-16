@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 public class OptionTests {
 
     @Test
-    void testSortOption() {
+    void SortableOptionByDisplayOrdinal() {
         var actual = Arrays.asList(
                 new Option(1, "とても好き"),
                 new Option(3, "どちらでもない"),
