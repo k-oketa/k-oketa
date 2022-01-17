@@ -8,6 +8,7 @@ public class UserName {
     String value;
 
     UserName(String value) {
+        if (value == null) throw new IllegalArgumentException();
         this.value = value;
     }
 }
