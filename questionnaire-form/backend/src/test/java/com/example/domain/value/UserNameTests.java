@@ -1,5 +1,6 @@
 package com.example.domain.value;
 
+import com.example.exception.user.ShortageUserNameException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,5 +18,11 @@ public class UserNameTests {
     void nullUserName() {
         assertThrows(IllegalArgumentException.class,
                 () -> new UserName(null));
+    }
+
+    @Test
+    void shortageUserName() {
+        assertThrows(ShortageUserNameException.class,
+                () -> new UserName("admi"));
     }
 }
