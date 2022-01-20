@@ -52,7 +52,6 @@ public class CircleApplicationService {
         var id = new CircleId(command.circleId());
         var circle = circleRepository.find(id);
         if (circle == null) throw new CircleNotFoundException();
-        if (circle.getMembers().size() >= 29) throw new CircleFullException();
 
         circle.getMembers().add(member);
         circleRepository.save(circle);
