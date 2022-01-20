@@ -15,7 +15,7 @@ public class UserName {
 
     String value;
 
-    UserName(String value) {
+    public UserName(String value) {
         if (value == null) throw new IllegalArgumentException();
         if (value.length() < 5) throw new ShortageUserNameException();
         if (value.length() > 64) throw new LongageUserNameException();
