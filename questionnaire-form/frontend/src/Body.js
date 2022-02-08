@@ -1,7 +1,11 @@
+import CreationForm from "./CreationForm";
+import {Container} from "@mui/material";
 
 
 export default function Body() {
     return (
-        <div></div>
+        <Container maxWidth="xl">
+            <CreationForm />
+        </Container>
     )
 }
