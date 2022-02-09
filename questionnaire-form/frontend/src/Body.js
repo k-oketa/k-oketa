@@ -1,11 +1,11 @@
-import CreationForm from "./CreationForm";
 import {Container} from "@mui/material";
+import UILibraryForm from "./UILibraryForm";
 
 
 export default function Body() {
     return (
         <Container maxWidth="xl">
-            <CreationForm />
+            <UILibraryForm />
         </Container>
     )
 }
