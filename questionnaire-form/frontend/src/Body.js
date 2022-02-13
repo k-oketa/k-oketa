@@ -1,11 +1,13 @@
 import {Container} from "@mui/material";
-import UILibraryForm from "./UILibraryForm";
+import SurveyCreationForm from "./SurveyCreationForm";
 
 
 export default function Body() {
     return (
         <Container maxWidth="xl">
-            <UILibraryForm />
+            <Container maxWidth="md">
+                <SurveyCreationForm />
+            </Container>
         </Container>
     )
 }
