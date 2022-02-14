@@ -1,12 +1,12 @@
 import {Container} from "@mui/material";
-import SurveyCreationForm from "./SurveyCreationForm";
+import SurveyCreation from "./creation/SurveyCreation";
 
 
 export default function Body() {
     return (
         <Container maxWidth="xl">
             <Container maxWidth="md">
-                <SurveyCreationForm />
+                <SurveyCreation />
             </Container>
         </Container>
     )
