@@ -30,7 +30,7 @@ export default function SurveyCreation() {
                             <Controller
                                 name="agreementBody"
                                 control={control}
-                                render={({ field }) => <TextField multiline fullWidth rows={2} />}
+                                render={({ field }) => <TextField multiline fullWidth rows={2} {...field} />}
                             />
                             <Stack spacing={2} direction="row">
                                 <CheckBox />
