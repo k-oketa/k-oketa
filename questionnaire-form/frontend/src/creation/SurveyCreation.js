@@ -1,6 +1,7 @@
 import {useForm, Controller} from "react-hook-form";
 import {Box, Button, Card, CardContent, Input, InputLabel, Stack, TextField} from "@mui/material";
 import DynamicQuestionField from "./DynamicQuestionField";
+import {CheckBox} from "@mui/icons-material";
 
 
 export default function SurveyCreation() {
@@ -31,6 +32,10 @@ export default function SurveyCreation() {
                                 control={control}
                                 render={({ field }) => <TextField multiline fullWidth rows={2} />}
                             />
+                            <Stack spacing={2} direction="row">
+                                <CheckBox />
+                                <InputLabel>上記の規約に同意する</InputLabel>
+                            </Stack>
                         </Stack>
                     </CardContent>
                 </Card>
