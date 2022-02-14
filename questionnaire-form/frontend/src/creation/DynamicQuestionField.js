@@ -33,7 +33,7 @@ export default function DynamicQuestionField(props) {
                 </Card>
             ))}
             <Stack direction="row" spacing={2}>
-                <Button variant="outlined" startIcon={<Add />} onClick={() => {append(defaultSingleChoice())}}>単一選択形式</Button>
+                <Button variant="outlined" startIcon={<Add />} onClick={() => {append(defaultSingleChoice())}}>選択形式</Button>
                 <Button variant="outlined" startIcon={<Add />} onClick={() => {append(defaultMultipleChoice())}}>複数選択形式</Button>
                 <Button variant="outlined" startIcon={<Add />} onClick={() => {append(defaultDescription())}}>記述形式</Button>
                 <Button variant="outlined" startIcon={<Add />} onClick={() => {append(defaultSingleChoiceAndDescription())}}>選択記述形式</Button>
