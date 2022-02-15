@@ -33,7 +33,7 @@ export default function SurveyCreation() {
                                 render={({ field }) => <TextField multiline fullWidth rows={2} {...field} />}
                             />
                             <Stack spacing={2} direction="row">
-                                <CheckBox />
+                                <CheckBox color="disabled" />
                                 <InputLabel>上記の規約に同意する</InputLabel>
                             </Stack>
                         </Stack>
