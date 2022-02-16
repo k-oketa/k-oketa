@@ -1,5 +1,6 @@
 package com.example;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -20,19 +21,16 @@ public class SignUpController {
     }
 
     @GetMapping("send")
-    public void send() {
+    public String send() {
         var newAccount = new SignUpForm();
-        newAccount.setUsername("");
+        newAccount.setUsername("k-oketa");
         newAccount.setPassphrase("k-oketa");
-        rest.postForLocation("http://localhost:8080/signUp", newAccount);
+        return rest.postForObject("http://localhost:8080/signUp", newAccount, String.class);
     }
 
     @PostMapping("signUp")
-    public void signUp(@RequestBody @Validated SignUpForm signUpForm,
-                       BindingResult result) {
-        if (result.hasErrors()) {
-            System.out.println("error!");
-        }
-        System.out.println(signUpForm.getUsername() + " " + signUpForm.getPassphrase());
+    public String signUp(@RequestBody SignUpForm signUpForm) {
+        new Account(signUpForm.getUsername(), signUpForm.getPassphrase());
+        return "";
     }
 }
