@@ -17,6 +17,6 @@ public class SignUpController {
     @ResponseBody
     public ResponseEntity<?> signUp(@RequestBody SignUpForm signUpForm) {
         new Account(signUpForm.getUsername(), signUpForm.getPassphrase());
-        return new CreatedResponseEntity();
+        return new CreatedResponseEntity("アカウントの作成が完了", 1);
     }
 }
