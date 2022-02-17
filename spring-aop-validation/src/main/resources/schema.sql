@@ -1,0 +1,20 @@
+
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS answer;
+DROP TABLE IF EXISTS score;
+
+CREATE TABLE IF NOT EXISTS account (
+    user_id INTEGER UNIQUE NOT NULL,
+    username VARCHAR(64) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS answer (
+    answer_id INTEGER UNIQUE NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS score (
+    answer_id INTEGER UNIQUE NOT NULL,
+    score INTEGER,
+    FOREIGN KEY (answer_id) REFERENCES answer(answer_id)
+);
+
