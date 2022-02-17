@@ -11,6 +11,7 @@ ReactDOM.render(
             <Routes>
                 <Route exact path="/survey/creation" element={<App mode="creation" />} />
                 <Route exact path="/survey/answer" element={<App mode="answer" />} />
+                <Route exact path="/survey/scoring" element={<App mode="scoring" />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>,
