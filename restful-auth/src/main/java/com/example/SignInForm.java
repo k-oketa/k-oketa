@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class Greeting {
+public class SignInForm {
 
-    private final long id;
-    private final String content;
+    private final String username;
+    private final String password;
 }
