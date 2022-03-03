@@ -12,10 +12,10 @@
                 <span th:text="${questionField.optionFields}"></span>
                 <ul>
                     <li th:each="optionField, optionFieldStat : ${questionField.optionFields}">
-<!--                        <input type="text" th:field="${questionField.optionFields[__${optionFieldStat.index}__].body}" />-->
+                        <input type="text" th:field="*{questionFields[__${questionFieldStat.index}__].optionFields[__${optionFieldStat.index}__].body}" />
                     </li>
-<!--                    <button type="submit" name="addOption">Add Option</button>-->
                 </ul>
+                <button type="submit" name="addOption">Add Option</button>
             </li>
         </ul>
         <button type="submit" name="addQuestion">Add Question</button>

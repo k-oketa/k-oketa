@@ -15,7 +15,7 @@ public class QuestionField {
 
     public QuestionField() {
         this.body = "";
-        this.optionFields = Arrays.asList(new OptionField());
+        this.optionFields = Arrays.asList(new OptionField(), new OptionField());
     }
 
     public void addOptionField() {
