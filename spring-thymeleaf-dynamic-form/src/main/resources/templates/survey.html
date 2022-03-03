@@ -12,13 +12,15 @@
                 <input type="hidden" th:field="*{questionFields[__${questionFieldStat.index}__].questionType}" />
                 <input type="text" th:field="*{questionFields[__${questionFieldStat.index}__].body}" />
                 <span th:text="${questionField.optionFields}"></span>
-                <ul>
-                    <li th:each="optionField, optionFieldStat : ${questionField.optionFields}">
-                        <input type="text" th:field="*{questionFields[__${questionFieldStat.index}__].optionFields[__${optionFieldStat.index}__].body}" />
-                    </li>
-                </ul>
-                <button type="submit" name="addOption" th:value="${questionFieldStat.index}">Add Option</button>
-                <button type="submit" name="resetOption" th:value="${questionFieldStat.index}">Reset Option</button>
+                <div th:if="${questionField.questionType.isSingleChoice()}">
+                    <ul>
+                        <li th:each="optionField, optionFieldStat : ${questionField.optionFields}">
+                            <input type="text" th:field="*{questionFields[__${questionFieldStat.index}__].optionFields[__${optionFieldStat.index}__].body}" />
+                        </li>
+                    </ul>
+                    <button type="submit" name="addOption" th:value="${questionFieldStat.index}">Add Option</button>
+                    <button type="submit" name="resetOption" th:value="${questionFieldStat.index}">Reset Option</button>
+                </div>
                 <button type="submit" name="removeQuestion" th:value="${questionFieldStat.index}">Remove Question</button>
             </li>
         </ul>
