@@ -3,7 +3,7 @@ package com.example;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -11,14 +11,17 @@ import java.util.List;
 public class QuestionField {
 
     private String body;
+    private int optionCount;
     private List<OptionField> optionFields;
 
     public QuestionField() {
         this.body = "";
-        this.optionFields = Arrays.asList(new OptionField(), new OptionField());
+        this.optionCount = 1;
+        this.optionFields = new ArrayList<>(optionCount);
     }
 
     public void addOptionField() {
-        this.optionFields.add(new OptionField());
+        this.optionCount += 1;
+        this.optionFields = new ArrayList<>(optionCount);
     }
 }

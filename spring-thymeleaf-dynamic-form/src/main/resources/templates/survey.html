@@ -15,7 +15,7 @@
                         <input type="text" th:field="*{questionFields[__${questionFieldStat.index}__].optionFields[__${optionFieldStat.index}__].body}" />
                     </li>
                 </ul>
-                <button type="submit" name="addOption">Add Option</button>
+                <button type="submit" name="index" th:value="${questionFieldStat.index}">Add Option</button>
             </li>
         </ul>
         <button type="submit" name="addQuestion">Add Question</button>
