@@ -24,8 +24,16 @@ public class SurveyController {
     }
 
     @PostMapping(params = {"index"})
-    public ModelAndView addQuestion(@RequestParam("index") int index, @ModelAttribute SurveyField surveyField, ModelAndView mav) {
+    public ModelAndView addOption(@RequestParam("index") int index, @ModelAttribute SurveyField surveyField, ModelAndView mav) {
         surveyField.getQuestionFields().get(index).addOptionField();
+        return mav;
+    }
+
+    @PostMapping
+    public ModelAndView create(@ModelAttribute SurveyField surveyField, ModelAndView mav) {
+        log.info(surveyField.toString());
+        log.info(surveyField.getQuestionFields().toString());
+        log.info(surveyField.getQuestionFields().get(0).getOptionFields().toString());
         return mav;
     }
 }
