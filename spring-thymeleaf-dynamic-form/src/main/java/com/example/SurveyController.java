@@ -32,11 +32,16 @@ public class SurveyController {
         return mav;
     }
 
+    @PostMapping(params = {"resetOption"})
+    public ModelAndView resetOption(@ModelAttribute SurveyField surveyField, HttpServletRequest req, ModelAndView mav) {
+        var questionIndex = Integer.parseInt(req.getParameter("resetOption"));
+        surveyField.getQuestionFields().get(questionIndex).getOptionFields().clear();
+        return mav;
+    }
+
     @PostMapping
     public ModelAndView create(@ModelAttribute SurveyField surveyField, ModelAndView mav) {
         log.info(surveyField.toString());
-        log.info(surveyField.getQuestionFields().toString());
-        log.info(surveyField.getQuestionFields().get(0).getOptionFields().toString());
         return mav;
     }
 
