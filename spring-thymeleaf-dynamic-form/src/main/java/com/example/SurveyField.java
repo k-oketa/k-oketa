@@ -18,6 +18,15 @@ public class SurveyField {
     }
 
     public void addQuestion() {
-        this.questionFields.add(new QuestionField());
+        var questionField = new QuestionField();
+        questionField.setQuestionType(QuestionType.SINGLE_CHOICE);
+        this.questionFields.add(questionField);
     }
+
+    public void addDescriptionQuestion() {
+        var questionField = new QuestionField();
+        questionField.setQuestionType(QuestionType.DESCRIPTION);
+        this.questionFields.add(questionField);
+    }
+
 }

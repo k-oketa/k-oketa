@@ -12,10 +12,12 @@ import java.util.List;
 @ToString
 public class QuestionField {
 
+    private QuestionType questionType;
     private String body;
     private List<OptionField> optionFields;
 
     public QuestionField() {
+        this.questionType = QuestionType.INITIALIZE;
         this.body = "";
         this.optionFields = new ArrayList<>();
     }

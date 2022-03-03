@@ -6,8 +6,10 @@
 </head>
 <body>
     <form action="#" th:action="@{/survey}" th:object="${surveyField}" method="post">
+        <div th:text="${surveyField}"></div>
         <ul>
             <li th:each="questionField, questionFieldStat : *{questionFields}">
+                <input type="hidden" th:field="*{questionFields[__${questionFieldStat.index}__].questionType}" />
                 <input type="text" th:field="*{questionFields[__${questionFieldStat.index}__].body}" />
                 <span th:text="${questionField.optionFields}"></span>
                 <ul>
@@ -21,6 +23,7 @@
             </li>
         </ul>
         <button type="submit" name="addQuestion">Add Question</button>
+        <button type="submit" name="addDescriptionQuestion">Add D</button>
         <button type="submit">Submit</button>
     </form>
 </body>

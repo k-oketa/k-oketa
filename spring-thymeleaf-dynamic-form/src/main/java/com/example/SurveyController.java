@@ -25,6 +25,12 @@ public class SurveyController {
         return mav;
     }
 
+    @PostMapping(params = {"addDescriptionQuestion"})
+    public ModelAndView addDescriptionQuestion(@ModelAttribute SurveyField surveyField, ModelAndView mav) {
+        surveyField.addDescriptionQuestion();
+        return mav;
+    }
+
     @PostMapping(params = {"addOption"})
     public ModelAndView addOption(@ModelAttribute SurveyField surveyField, HttpServletRequest req, ModelAndView mav) {
         var questionIndex = Integer.parseInt(req.getParameter("addOption"));
