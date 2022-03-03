@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("survey")
 @Slf4j
@@ -23,9 +25,10 @@ public class SurveyController {
         return mav;
     }
 
-    @PostMapping(params = {"index"})
-    public ModelAndView addOption(@RequestParam("index") int index, @ModelAttribute SurveyField surveyField, ModelAndView mav) {
-        surveyField.getQuestionFields().get(index).addOptionField();
+    @PostMapping(params = {"addOption"})
+    public ModelAndView addOption(@ModelAttribute SurveyField surveyField, HttpServletRequest req, ModelAndView mav) {
+        var questionIndex = Integer.parseInt(req.getParameter("addOption"));
+        surveyField.getQuestionFields().get(questionIndex).addOptionField();
         return mav;
     }
 
@@ -34,6 +37,13 @@ public class SurveyController {
         log.info(surveyField.toString());
         log.info(surveyField.getQuestionFields().toString());
         log.info(surveyField.getQuestionFields().get(0).getOptionFields().toString());
+        return mav;
+    }
+
+    @PostMapping(params = {"removeQuestion"})
+    public ModelAndView removeQuestion(@ModelAttribute SurveyField surveyField, HttpServletRequest req, ModelAndView mav) {
+        var questionIndex = Integer.parseInt(req.getParameter("removeQuestion"));
+        surveyField.getQuestionFields().remove(questionIndex);
         return mav;
     }
 }
